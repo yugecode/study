@@ -14,7 +14,7 @@ Welcome<br/>
 <script type="text/javascript">
     var websocket = null;
 
-    //ÅĞ¶Ïµ±Ç°ä¯ÀÀÆ÷ÊÇ·ñÖ§³ÖWebSocket
+    //åˆ¤æ–­å½“å‰æµè§ˆå™¨æ˜¯å¦æ”¯æŒWebSocket
     if('WebSocket' in window){
         websocket = new WebSocket("ws://localhost:8888/websocket");
     }
@@ -22,42 +22,42 @@ Welcome<br/>
         alert('Not support websocket')
     }
 
-    //Á¬½Ó·¢Éú´íÎóµÄ»Øµ÷·½·¨
+    //è¿æ¥å‘ç”Ÿé”™è¯¯çš„å›è°ƒæ–¹æ³•
     websocket.onerror = function(){
         setMessageInnerHTML("error");
     };
 
-    //Á¬½Ó³É¹¦½¨Á¢µÄ»Øµ÷·½·¨
+    //è¿æ¥æˆåŠŸå»ºç«‹çš„å›è°ƒæ–¹æ³•
     websocket.onopen = function(event){
         setMessageInnerHTML("open");
     }
 
-    //½ÓÊÕµ½ÏûÏ¢µÄ»Øµ÷·½·¨
+    //æ¥æ”¶åˆ°æ¶ˆæ¯çš„å›è°ƒæ–¹æ³•
     websocket.onmessage = function(event){
         setMessageInnerHTML(event.data);
     }
 
-    //Á¬½Ó¹Ø±ÕµÄ»Øµ÷·½·¨
+    //è¿æ¥å…³é—­çš„å›è°ƒæ–¹æ³•
     websocket.onclose = function(){
         setMessageInnerHTML("close");
     }
 
-    //¼àÌı´°¿Ú¹Ø±ÕÊÂ¼ş£¬µ±´°¿Ú¹Ø±ÕÊ±£¬Ö÷¶¯È¥¹Ø±ÕwebsocketÁ¬½Ó£¬·ÀÖ¹Á¬½Ó»¹Ã»¶Ï¿ª¾Í¹Ø±Õ´°¿Ú£¬server¶Ë»áÅ×Òì³£¡£
+    //ç›‘å¬çª—å£å…³é—­äº‹ä»¶ï¼Œå½“çª—å£å…³é—­æ—¶ï¼Œä¸»åŠ¨å»å…³é—­websocketè¿æ¥ï¼Œé˜²æ­¢è¿æ¥è¿˜æ²¡æ–­å¼€å°±å…³é—­çª—å£ï¼Œserverç«¯ä¼šæŠ›å¼‚å¸¸ã€‚
     window.onbeforeunload = function(){
         websocket.close();
     }
 
-    //½«ÏûÏ¢ÏÔÊ¾ÔÚÍøÒ³ÉÏ
+    //å°†æ¶ˆæ¯æ˜¾ç¤ºåœ¨ç½‘é¡µä¸Š
     function setMessageInnerHTML(innerHTML){
         document.getElementById('message').innerHTML += innerHTML + '<br/>';
     }
 
-    //¹Ø±ÕÁ¬½Ó
+    //å…³é—­è¿æ¥
     function closeWebSocket(){
         websocket.close();
     }
 
-    //·¢ËÍÏûÏ¢
+    //å‘é€æ¶ˆæ¯
     function send(){
         var message = document.getElementById('text').value;
         websocket.send(message);
