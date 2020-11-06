@@ -2,3 +2,12 @@ server:
   port: 8888
   servlet:
     context-path: /
+spring:
+  application:
+    name: study
+  cloud:
+    nacos:
+      discovery:
+        username: nacos
+        password: nacos
+        server-addr: 10.0.1.3:8848
