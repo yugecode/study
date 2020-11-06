@@ -29,6 +29,7 @@ public class Nacos {
             ServiceInstance choose = loadBalancerClient.choose(s);
             System.out.println(choose.getUri());
 
+
         }
         return nacosDiscoveryClient.getServices();
     }
